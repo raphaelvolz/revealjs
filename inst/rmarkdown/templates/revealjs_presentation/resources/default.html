@@ -17,6 +17,7 @@ $endif$
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="$revealjs-url$/css/reveal.css"/>
+  <link rel="stylesheet" href="$revealjs-url$/css/font-awesome.min.css">
 
 $if(highlightjs)$
 <link rel="stylesheet"
@@ -170,10 +171,6 @@ $if(history)$
         // Push each slide change to the browser history
         history: $history$,
 $endif$
-$if(keyboard)$
-        // Enable keyboard shortcuts for navigation
-        keyboard: $keyboard$,
-$endif$
 $if(overview)$
         // Enable the slide overview mode
         overview: $overview$,
@@ -283,8 +280,47 @@ $if(maxScale)$
         maxScale: $maxScale$,
 $endif$
 
-        // Optional reveal.js plugins
-        dependencies: []
+        audio: {
+			prefix: 'audio/',   // audio files are stored in the "audio" folder
+			suffix: '.ogg',     // audio files have the ".ogg" ending
+            textToSpeechURL: null,  // the URL to the text to speech converter
+            defaultText: false,     // use slide text as default for the text to speech converter
+            advance: 0,         // advance to next slide after given time in milliseconds after audio has played
+            autoplay: false,    // automatically start slideshow
+            defaultDuration: 5, // default duration in seconds if no audio is available 
+            playerOpacity: 0.05,    // opacity value of audio player if unfocused
+            startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+        },
+        keyboard: { 
+		    67: function() { Reveal.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+			66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+			46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+			8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+			68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+            82: function() { Recorder.toggleRecording(); }, // press 'r' to start/stop recording
+            90: function() { Recorder.downloadZip(); },     // press 'z' to download zip containing audio files
+            84: function() { Recorder.fetchTTS(); }     // press 't' to fetch TTS audio files
+        },
+		menu: {
+			themes:false,
+			markers:true,
+			openButton:false,
+			openSlideNumber:true,
+			side:'right',
+			},
+		chalkboard: { 
+			src: "notes.js",
+		},
+        // Raphaels reveal.js plugins
+        dependencies: [
+		
+        { src: 'libs/reveal.js-3.2.0/plugin/chalkboard/chalkboard.js' },
+		{ src: 'libs/reveal.js-3.2.0/plugin/menu/menu.js' },
+        { src: 'libs/reveal.js-3.2.0/plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },              
+        { src: 'libs/reveal.js-3.2.0/plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } }
+
+
+        ]
       });
     </script>
 $if(mathjax-url)$
