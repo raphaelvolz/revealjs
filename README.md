@@ -1,4 +1,9 @@
 R Markdown Format for reveal.js Presentations
+** This fork includes some great reveal.js plugins with default configurations as used for [my lectures](http://www.raphaelvolz.de) **
+- [Audio](https://github.com/rajgoel/reveal.js-plugins/tree/master/audio-slideshow)
+- [Chalkboard](https://github.com/rajgoel/reveal.js-plugins/tree/master/chalkboard)
+- [Menu](https://github.com/denehyg/reveal.js-menu) 
+
 ================
 
 -   [Overview](#overview)
