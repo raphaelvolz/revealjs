@@ -26,9 +26,8 @@ You can use this format in R Markdown documents by installing this package as fo
 ``` r
 install.packages("devtools")
 library(devtools)
-dev_mode(on=T)
 install_github("raphaelvolz/revealjs")
-dev_mode(on=F)
+library(revealjs)
 ```
 
 To create a [reveal.js](http://lab.hakim.se/reveal-js/#/) presentation from R Markdown you specify the `revealjs_presentation` output format in the front-matter of your document. You can create a slide show broken up into sections by using the `#` and `##` heading tags (you can also create a new slide without a header using a horizontal rule (`----`). For example here's a simple slide show:
