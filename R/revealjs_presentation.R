@@ -70,7 +70,7 @@ revealjs_presentation <- function(incremental = FALSE,
                                   fig_retina = if (!fig_caption) 2,
                                   fig_caption = FALSE,
                                   smart = TRUE,
-                                  self_contained = TRUE,
+                                  self_contained = FALSE,
                                   theme = "simple",
                                   transition = "default",
                                   background_transition = "default",
@@ -175,7 +175,7 @@ revealjs_presentation <- function(incremental = FALSE,
       stop("Using reveal_plugins requires self_contained: false")
     
     # validate specified plugins are supported
-    supported_plugins <- c("notes", "search", "zoom", "chalkboard", "menu")
+    supported_plugins <- c("notes", "search", "zoom", "chalkboard", "menu", "audio")
     invalid_plugins <- setdiff(reveal_plugins, supported_plugins)
     if (length(invalid_plugins) > 0)
       stop("The following plugin(s) are not supported: ",
