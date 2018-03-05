@@ -8,10 +8,10 @@ revealjs_presentation(incremental = FALSE, center = FALSE,
   slide_level = 2, fig_width = 8, fig_height = 6, fig_retina = if
   (!fig_caption) 2, fig_caption = FALSE, smart = TRUE,
   self_contained = TRUE, theme = "simple", transition = "default",
-  background_transition = "default", history = TRUE,
-  reveal_options = NULL, highlight = "default", mathjax = "default",
+  background_transition = "default", reveal_options = NULL,
+  reveal_plugins = NULL, highlight = "default", mathjax = "default",
   template = "default", css = NULL, includes = NULL, keep_md = FALSE,
-  lib_dir = NULL, pandoc_args = NULL, ...)
+  lib_dir = NULL, pandoc_args = NULL, extra_dependencies = NULL, ...)
 }
 \arguments{
 \item{incremental}{\code{TRUE} to render slide bullets incrementally. Note
@@ -31,12 +31,11 @@ section levels with reveal.js.}
 
 \item{fig_height}{Default width (in inches) for figures}
 
-\item{fig_retina}{Scaling to perform for retina displays (defaults to 2 when
-\code{fig_caption} is \code{FALSE}, which currently works for all widely
-used retina displays). Set to \code{NULL} to prevent retina scaling. Note
-that this will always be \code{NULL} when \code{keep_md} is specified (this
-is because \code{fig_retina} relies on outputting HTML directly into the
-markdown document).}
+\item{fig_retina}{Scaling to perform for retina displays (defaults to 2, which
+currently works for all widely used retina displays). Set to \code{NULL} to
+prevent retina scaling. Note that this will always be \code{NULL} when
+\code{keep_md} is specified (this is because \code{fig_retina} relies on
+outputting HTML directly into the markdown document).}
 
 \item{fig_caption}{\code{TRUE} to render figures with captions}
 
@@ -53,17 +52,20 @@ it's size).}
 \item{theme}{Visual theme ("simple", "sky", "beige", "serif", "solarized",
 "blood", "moon", "night", "black", "league" or "white").}
 
-\item{transition}{Slide transition ("default", "none", "fade", "slide", 
+\item{transition}{Slide transition ("default", "none", "fade", "slide",
 "convex", "concave" or "zoom")}
 
 \item{background_transition}{Slide background-transition ("default", "none",
 "fade", "slide", "convex", "concave" or "zoom")}
 
-\item{history}{\code{TRUE} to push each slide change to the browser history.}
-
-\item{reveal_options}{Additional options to specify for reveal.js (see 
+\item{reveal_options}{Additional options to specify for reveal.js (see
 \href{https://github.com/hakimel/reveal.js#configuration}{https://github.com/hakimel/reveal.js#configuration}
 for details).}
+
+\item{reveal_plugins}{Reveal plugins to include. Available plugins include
+"notes", "search", "zoom", and "chalkboard". Note that
+\code{self_contained} must be set to \code{FALSE} in order to use Reveal
+plugins.}
 
 \item{highlight}{Syntax highlighting style. Supported styles include
 "default", "tango", "pygments", "kate", "monochrome", "espresso",
@@ -93,6 +95,9 @@ bootstrap, etc.) into. By default this will be the name of the document with
 \code{_files} appended to it.}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc}
+
+\item{extra_dependencies}{Additional function arguments to pass to the base R
+Markdown HTML output formatter \code{\link[rmarkdown:html_document_base]{rmarkdown::html_document_base()}}.}
 
 \item{...}{Ignored}
 }
@@ -126,4 +131,3 @@ render("pres.Rmd", revealjs_presentation(incremental = TRUE))
 
 
 }
-
