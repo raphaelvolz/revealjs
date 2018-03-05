@@ -12,12 +12,11 @@ $endif$
 $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
 $endif$
-  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="$revealjs-url$/css/reveal.css"/>
-<!--  <link rel="stylesheet" href="$revealjs-url$/css/font-awesome.min.cs"> -->
 
 $if(highlightjs)$
 <link rel="stylesheet"
@@ -550,6 +549,10 @@ $if(history)$
         // Push each slide change to the browser history
         history: $history$,
 $endif$
+$if(keyboard)$
+        // Enable keyboard shortcuts for navigation
+        keyboard: $keyboard$,
+$endif$
 $if(overview)$
         // Enable the slide overview mode
         overview: $overview$,
@@ -659,7 +662,97 @@ $if(maxScale)$
         maxScale: $maxScale$,
 $endif$
 
+$if(plugin-menu)$
+        menu: {
+$if(menu-side)$
+          side: $menu-side$,
+$endif$   
+$if(menu-numbers)$
+          numbers: $menu-numbers$,
+$endif$    
+$if(menu-titleSelector)$
+          titleSelector: $menu-titleSelector$,
+$endif$    
+$if(menu-hideMissingTitles)$
+          hideMissingTitles: $menu-hideMissingTitles$,
+$endif$    
+$if(menu-markers)$
+          markers: $menu-markers$,
+$endif$    
+$if(menu-openButton)$
+          openButton: $menu-openButton$,
+$endif$    
+$if(menu-openSlideNumber)$
+          openSlideNumber: $menu-openSlideNumber$,
+$endif$    
+$if(menu-keyboard)$
+          keyboard: $menu-keyboard$,
+$endif$ 
+          custom: false,
+          themes: false,
+          transitions: false
+        },
 
+$endif$
+
+$if(plugin-chalkboard)$
+
+        chalkboard: {
+$if(chalkboard-src)$
+          src: $chalkboard-src$,
+$endif$
+$if(chalkboard-readOnly)$
+          readOnly: $chalkboard-readOnly$,
+$endif$
+$if(chalkboard-toggleNotesButton)$
+          toggleNotesButton: $chalkboard-toggleNotesButton$,
+$endif$
+$if(chalkboard-toggleChalkboardButton)$
+          toggleChalkboardButton: $chalkboard-toggleChalkboardButton$,
+$endif$
+$if(chalkboard-transition)$
+          transition: $chalkboard-transition$,
+$endif$
+$if(chalkboard-theme)$
+          theme: $chalkboard-theme$,
+$endif$
+$if(chalkboard-color)$
+          color: $chalkboard-color$,
+$endif$
+$if(chalkboard-background)$
+          background: $chalkboard-background$,
+$endif$
+$if(chalkboard-pen)$
+          pen: $chalkboard-pen$,
+$endif$
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+$endif$
+
+        // Optional reveal.js plugins
+        dependencies: [
+$if(plugin-notes)$
+          { src: '$revealjs-url$/plugin/notes/notes.js', async: true },
+$endif$
+$if(plugin-search)$
+          { src: '$revealjs-url$/plugin/search/search.js', async: true },
+$endif$
+$if(plugin-zoom)$
+          { src: '$revealjs-url$/plugin/zoom-js/zoom.js', async: true },
+$endif$
+$if(plugin-chalkboard)$
+          { src: '$revealjs-url$/plugin/chalkboard/chalkboard.js', async: true },
+$endif$
+$if(plugin-menu)$
+          { src: '$revealjs-url$/plugin/menu/menu.js', async: true },
+$endif$
         ]
       });
     </script>
