@@ -233,7 +233,7 @@ revealjs_presentation <- function(incremental = FALSE,
     args
   }
   
-  # return format
+  # return format 
   output_format(
     knitr = knitr_options_html(fig_width, fig_height, fig_retina, keep_md),
     pandoc = pandoc_options(to = "revealjs",
