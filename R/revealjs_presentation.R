@@ -22,7 +22,7 @@
 #'   \href{https://github.com/hakimel/reveal.js#configuration}{https://github.com/hakimel/reveal.js#configuration}
 #'    for details).
 #' @param reveal_plugins Reveal plugins to include. Available plugins include
-#'   "notes", "search", "zoom", "chalkboard", and "menu". Note that
+#'   "notes", "search", "zoom", "chalkboard", "audio" and "menu". Note that
 #'   \code{self_contained} must be set to \code{FALSE} in order to use Reveal
 #'   plugins.
 #' @param template Pandoc template to use for rendering. Pass "default" to use 
