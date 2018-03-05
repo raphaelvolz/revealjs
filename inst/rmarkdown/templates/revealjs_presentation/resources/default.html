@@ -738,9 +738,9 @@ $endif$
 
         // Optional reveal.js plugins
         dependencies: [
-$if(plugin-audio)${ src: '$revealjs-url$/plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },				
+$if(plugin-audio)$
+    { src: '$revealjs-url$/plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },				
 		{ src: '$revealjs-url$/plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
-		
 $endif$
 $if(plugin-notes)$
           { src: '$revealjs-url$/plugin/notes/notes.js', async: true },
